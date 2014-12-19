@@ -1,0 +1,1 @@
+ps -x | grep "$PWD" | awk '{cmd="kill -9 "$1;system(cmd)}'
