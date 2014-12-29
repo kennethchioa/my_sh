@@ -1,0 +1,16 @@
+#!/usr/bin/expect -f
+set timeout 20
+spawn virsh -c qemu+ssh://10.205.20.60/system list --all
+expect ":"
+send "Cm#13E@E\r"
+interact 
+set time 20
+for {set i 1} {$i < 5} {incr i} {
+puts "KVM$i status:"
+        spawn virsh -c qemu+ssh://kvm$i.powere2e.com/system list --all
+#if expect "(yes/no)?" 
+#send "yes\r"
+expect ":"
+send "shP13E@E\r"
+interact
+    }
